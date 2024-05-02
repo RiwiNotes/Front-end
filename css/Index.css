@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+h1{
+font-family: "Lato", sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+body {
+
+    font-family: Arial, sans-serif;
+    background-image: url("https://img.freepik.com/foto-gratis/lisa-pared-estuco-blanco_1194-6983.jpg?t=st=1714610521~exp=1714614121~hmac=731145e6d4908c8aafa9dc567e7b7bd7e1e7a4322d5886f1602487b8e114c51d&w=740");
+    margin: 0;
+    padding: 0;
+}
+
+.notes-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.note {
+    background-color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.note:hover {
+    transform: scale(1.05);
+}
+
+.note h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.note p {
+    font-size: 14px;
+    color: white;
+}
+
+select {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px; 
+    font-size: 16px; 
+    color: #21365c;
+    width: 200px ;
+    border-radius: 5px;
+    outline: none; 
+    transition: border-color 0.3s; 
+}
+
+
+select::-ms-expand {
+    display: none;
+}
+
+
+select:hover,
+select:focus {
+    border-color: #aaa;
+}
+
+

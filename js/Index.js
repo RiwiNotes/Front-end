@@ -1,16 +1,28 @@
-let row = document.getElementById("row");
-fetch("http://localhost:5024/api/Categorias").then(r => r.json())
+let notes = document.getElementById("notes");
+fetch("http://localhost:5024/api/Notas").then(r => r.json())
 .then(data =>{
  data.forEach(element => {
-        row.innerHTML += `<div class="col-md-3">
-        <div class="card">
-            <div class="card-body" >
-                <h5 class="card-title">${element.nombre_categoria}</h5>
-                
-                
-            </div>
+    notes.innerHTML += `
+        <div class="note">
+            <h2>${element.titulo}</h2>
+            <p>${element.contenido}</p>
+            <p>${element.fecha}</p>
         </div>
-    </div>`
+        `
     });
+})
+
+
+// fetch categorias 
+let select = document.getElementById("select");
+fetch("http://localhost:5024/api/Categorias").then(response => response.json())
+.then(data => {
+    data.forEach(categoria => {
+    select.innerHTML += `
+    <option value="${categoria.id}">${categoria.nombre_categoria}</option>
+    
+`
+    
+});
 })
 
