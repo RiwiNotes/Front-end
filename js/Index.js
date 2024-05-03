@@ -111,3 +111,48 @@ function crearNota(){
         return r.json();
     });
 }
+
+function ActualizarNota(id){
+
+
+    fetch("http://localhost:5024/api/Notas")
+    .then(r => r.json)
+    .then(data =>{
+        notes.innerHTML = 
+        `
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content fondo">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5 mih1" id="exampleModalLabel">Nota</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body fondo" id="modal-body">
+                    <div >
+                    <form class="form">
+                        <label for="select2" class="form-label">Categorías</label>
+                        <select aria-label="Default select example" id="select2" class="form-select mb-3" required>
+                            <option selected>Categorías</option>
+                        </select>
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control mb-3" id="titulo" aria-describedby="emailHelp" value="${data.titulo}" required>
+                        
+                        <label for="contenido" class="form-label">Contenido</label>
+                        <textarea placeholder="Ingresa tu nota" id="contenido" class="form-control mb-3" value="${data.contenido}" required></textarea>
+                        
+                        
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" onclick="UpdateNota(${data.id})">Guardar cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        `
+    })
+}
+
+
