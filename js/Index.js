@@ -118,7 +118,7 @@ function ActualizarNota(id){
     fetch("http://localhost:5024/api/Notas")
     .then(r => r.json)
     .then(data =>{
-        notes.innerHTML = 
+        ntes.innerHTML = 
         `
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
