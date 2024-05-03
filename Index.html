@@ -13,16 +13,51 @@
             <div class="col-md-6">
                 <select  aria-label="Default select example" id="select">
                     <option selected>Categorias</option>
-    
                 </select>
             </div>
-        </div>
-    </div>
+            <div class="col-md-6">
+            
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Agregar nota
+            </button>
+            
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                    <form class="form">
+                        <label for="">Titulo</label><br>
+                        <input type="text" class="form-control" id="titulo" aria-describedby="emailHelp">
+                        <label for="">Contenido</label><br>
+                        <textarea placeholder="ingresa tu nota"  id="contenido"></textarea><br>
+                        <label for="">categorias</label>
+                        <select  aria-label="Default select example" id="select2">
+                            <option selected>Categorias</option>
+                        </select><br>
+                        <input type="date" id="fecha">
+                    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="crearNota()">Save changes</button>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+                        </div>
+                    </div>
+                </div>
     <div class="container">
         <div class="row" >
             <h1 class="text-center"> Mis notas</h1>
             <div class="notes-container" id="notes">
-                
+            
             </div>
         </div>
     </div>
