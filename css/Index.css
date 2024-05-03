@@ -318,3 +318,7 @@ label{
   backdrop-filter: blur(5px); /* Ajusta el valor de blur según prefieras */
   background-color: rgba(150, 147, 147, 0.5); /* Ajusta el valor de alpha para la transparencia */
 }
+
+.cardEditar{
+  width: 400px;
+}
