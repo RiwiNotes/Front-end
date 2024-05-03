@@ -115,13 +115,57 @@ function crearNota(){
 }
 
 function ActualizarNota(id){
-
-
     fetch(`http://localhost:5024/api/Notas/${id}`)
-    .then(r => r.json)
+    .then(r => r.json())
     .then(data =>{
-       console.log(data);
+        notes.innerHTML = 
+        `
+        <div class="card cardEditar">
+            <div class="card-body">
+                <form class="form">
+                    <label for="select2" class="form-label">Categorías</label>
+                    <select aria-label="Default select example" id="select3" class="form-select mb-3" required>
+                        <option selected>${data.categoria}</option>
+                    </select>
+                    <label for="titulo" class="form-label">Título</label>
+                    <input type="text" class="form-control mb-3" id="titulo2" aria-describedby="emailHelp" value="${data.titulo}" required>
+                    
+                    <label for="contenido" class="form-label">Contenido</label>
+                    <textarea id="contenido2" style="height: 200px;" class="form-control mb-3" required>${data.contenido}</textarea>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="UpdateNota(${data.id})">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        `
     })
+}
+
+function UpdateNota(id){
+    let titulo = document.getElementById("titulo2").value;
+    let contenido = document.getElementById("contenido2").value;
+    let fecha = new Date(Date.now()); 
+    let categoria = document.getElementById("select3").value;
+    fetch(`http://localhost:5024/api/Notas/${id}`,{
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            titulo,
+            contenido,
+            fecha,
+            categoria
+        })
+    }).then(r => {
+        if(r.ok){
+            location.reload(); 
+        }
+        return r.json();
+    });
 }
 
 
