@@ -124,7 +124,7 @@ function ActualizarNota(id){
             <div class="card-body">
                 <form class="form">
                     <label for="select2" class="form-label">Categorías</label>
-                    <select aria-label="Default select example" id="select3" class="form-select mb-3" required>
+                    <select  aria-label="Default select example" id="select3" class="form-select mb-3" required>
                         <option selected>${data.categoria}</option>
                     </select>
                     <label for="titulo" class="form-label">Título</label>
@@ -142,30 +142,34 @@ function ActualizarNota(id){
         </div>
         `
     })
-}
-
-function UpdateNota(id){
+}function UpdateNota(id){
+    
     let titulo = document.getElementById("titulo2").value;
     let contenido = document.getElementById("contenido2").value;
-    let fecha = new Date(Date.now()); 
+    let fecha = new Date(Date.now()).toJSON(); 
     let categoria = document.getElementById("select3").value;
-    fetch(`http://localhost:5024/api/Notas/${id}`,{
+    
+    fetch(`http://localhost:5024/api/Notas/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
+            id,
             titulo,
             contenido,
             fecha,
             categoria
         })
-    }).then(r => {
+    })
+    .then(r => {
         if(r.ok){
             location.reload(); 
+        } else {
+            console.error("Error al actualizar la nota:", r.status);
         }
-        return r.json();
+    })
+    .catch(error => {
+        console.error("Error en la solicitud PUT:", error);
     });
 }
-
-
