@@ -173,3 +173,37 @@ function ActualizarNota(id){
         console.error("Error en la solicitud PUT:", error);
     });
 }
+
+
+function buscar() {
+    let busqueda = document.getElementById("busqueda").value.toLowerCase(); 
+    
+
+    fetch("http://localhost:5024/api/Notas")
+        .then(r => r.json())
+        .then(data => {
+            let filtro = data.filter(function(Nota) {
+                if (Nota.titulo) {
+                    return Nota.titulo.toLowerCase().includes(busqueda) ||  Nota.categoria.toLowerCase().includes(busqueda) || Nota.contenido.toLowerCase().includes(busqueda);
+                }
+            });
+
+            let notesContainer = document.getElementById("notes");
+            notesContainer.innerHTML = '';
+
+            filtro.forEach(nota => {
+                notesContainer.innerHTML += `
+                    <div class="col-md-3">
+                        <div class="notes2-container">
+                            <div class="note">
+                                <h2>${nota.titulo}</h2>
+                                <p class="truncate-text">${nota.contenido}</p>
+                                <p>${nota.fecha}</p>
+                                <button class="buttonn" onclick="verDetalles(${nota.id})">Ver Nota</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+}
